@@ -1,0 +1,43 @@
+<form [formGroup]="clienteForm" (ngSubmit)="actualizarCliente()">
+  <div class="field">
+    <label>Primer Nombre</label>
+    <input pInputText formControlName="primerNombreCliente" />
+  </div>
+
+  <div class="field">
+    <label>Segundo Nombre</label>
+    <input pInputText formControlName="segundoNombreCliente" />
+  </div>
+
+  <div class="field">
+    <label>Primer Apellido</label>
+    <input pInputText formControlName="primerApellidoCliente" />
+  </div>
+
+  <div class="field">
+    <label>Segundo Apellido</label>
+    <input pInputText formControlName="segundoApellidoCliente" />
+  </div>
+
+  <div class="field">
+    <label>Tipo Identificación</label>
+    <input pInputText formControlName="tipoIdentificacionCliente" />
+  </div>
+
+  <div class="field">
+    <label>Cédula</label>
+    <input pInputText formControlName="numeroCedulaCliente" />
+  </div>
+
+  <div class="field">
+    <label>Dirección</label>
+    <input pInputText formControlName="direccionCliente" />
+  </div>
+
+  <div class="field">
+    <label>Usuario <span style="color: red">*</span></label>
+    <input pInputText formControlName="usuario" />
+  </div>
+
+  <button pButton label="Actualizar" type="submit" [disabled]="clienteForm.invalid"></button>
+</form>

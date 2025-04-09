@@ -22,4 +22,8 @@ export class ApiService {
   crearCliente(cliente: INuevoCliente): Observable<ICliente> {
     return this.http.post<ICliente>(ApiMicro.AdministracionClienteMicro, cliente);
   }
+
+  actualizarCliente(id: string, cliente: Partial<INuevoCliente> & { usuario: string }) {
+    return this.http.patch<ICliente>(`${ApiMicro.AdministracionClienteMicro}/${id}`, cliente);
+  }
 }

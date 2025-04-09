@@ -7,6 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import { DialogService, DynamicDialogModule, DynamicDialogRef } from 'primeng/dynamicdialog'
 import { NuevoClienteComponent } from './nuevo-cliente/nuevo-cliente.component';
 import { MessageService } from 'primeng/api';
+import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
 
 @Component({
   selector: 'app-cliente',
@@ -58,6 +59,27 @@ export class ClienteComponent implements OnInit{
       this.messageService.add({
         severity: 'info',
         summary: 'Cliente guardado exitosamente',
+        detail: ''
+      });
+    });
+  }
+  abrirDialogEditar(cliente: ICliente){
+    this.ref = this.dialogService.open(EditarClienteComponent,{
+      header: 'Editar Cliente',
+      width: '50vw',
+      modal: true,
+      contentStyle: { overflow: 'auto' },
+      breakpoints: {
+          '960px': '75vw',
+          '640px': '90vw'
+      },
+      data : cliente
+    });
+
+    this.ref.onClose.subscribe(() => {
+      this.messageService.add({
+        severity: 'info',
+        summary: 'Cliente editado exitosamente',
         detail: ''
       });
     });
