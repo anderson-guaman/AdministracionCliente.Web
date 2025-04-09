@@ -1,0 +1,21 @@
+
+<p-button label="Nuevo Cliente" severity="info" />
+
+<p-table [value]="clientes" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template #header>
+      <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Cedula</th>
+          <th>Opciones</th>
+      </tr>
+  </ng-template>
+  <ng-template #body let-cliente>
+      <tr>
+          <td>{{ cliente.primerNombreCliente }}</td>
+          <td>{{ cliente.primerApellidoCliente }}</td>
+          <td>{{ cliente.numeroCedulaCliente }}</td>
+          <td></td>
+      </tr>
+  </ng-template>
+</p-table>
