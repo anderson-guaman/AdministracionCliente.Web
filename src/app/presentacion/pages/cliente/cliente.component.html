@@ -4,7 +4,7 @@
   severity="info"
   (onClick)="abrirNuevoCliente()"
 />
-
+<p-toast></p-toast>
 <p-table [value]="clientes" [tableStyle]="{ 'min-width': '50rem' }">
   <ng-template #header>
       <tr>
@@ -20,14 +20,25 @@
           <td>{{ cliente.primerApellidoCliente }}</td>
           <td>{{ cliente.numeroCedulaCliente }}</td>
           <td>
-            <button
-              pButton
-              type="button"
-              icon="pi pi-pencil"
-              label="Editar"
-              class="p-button-sm p-button-info"
-              (click)="abrirDialogEditar(cliente)"
-            ></button>
+            <div class="">
+              <button
+                pButton
+                type="button"
+                icon="pi pi-pencil"
+                label="Editar"
+                class="p-button-sm p-button-info"
+                (click)="abrirDialogEditar(cliente)"
+                style="margin-right: 10px;"
+              ></button>
+              <button
+                pButton
+                type="button"
+                icon="pi pi-trash"
+                label="Eliminar"
+                class="p-button-sm p-button-info"
+                (click)="eliminarCliente(cliente)"
+              ></button>
+            </div>
           </td>
       </tr>
   </ng-template>

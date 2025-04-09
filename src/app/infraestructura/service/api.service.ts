@@ -26,4 +26,8 @@ export class ApiService {
   actualizarCliente(id: string, cliente: Partial<INuevoCliente> & { usuario: string }) {
     return this.http.patch<ICliente>(`${ApiMicro.AdministracionClienteMicro}/${id}`, cliente);
   }
+
+  eliminarCliente(id: string): Observable<ICliente> {
+    return this.http.delete<ICliente>(`${ApiMicro.AdministracionClienteMicro}/${id}`);
+  }
 }
