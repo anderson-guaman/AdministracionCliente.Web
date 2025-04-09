@@ -1,0 +1,53 @@
+<form [formGroup]="clienteForm" (ngSubmit)="guardarCliente()">
+  <div class="field">
+    <label>Primer Nombre</label>
+    <input pInputText formControlName="primerNombreCliente" />
+  </div>
+
+  <div class="field">
+    <label>Segundo Nombre</label>
+    <input pInputText formControlName="segundoNombreCliente" />
+  </div>
+
+  <div class="field">
+    <label>Primer Apellido</label>
+    <input pInputText formControlName="primerApellidoCliente" />
+  </div>
+
+  <div class="field">
+    <label>Segundo Apellido</label>
+    <input pInputText formControlName="segundoApellidoCliente" />
+  </div>
+
+  <div class="field">
+    <label>Tipo de Identificación</label>
+    <input pInputText formControlName="tipoIdentificacionCliente" />
+  </div>
+
+  <div class="field">
+    <label>Número de Cédula</label>
+    <input pInputText formControlName="numeroCedulaCliente" />
+  </div>
+
+  <div class="field">
+    <label>Dirección</label>
+    <input pInputText formControlName="direccionCliente" />
+  </div>
+
+  <div class="field">
+    <label>Teléfonos</label>
+    <div formArrayName="telefonoCliente">
+      <div *ngFor="let tel of telefonos.controls; let i = index">
+        <input pInputText [formControlName]="i" />
+      </div>
+      <button pButton type="button" label="Agregar Teléfono" (click)="agregarTelefono()"></button>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Usuario</label>
+    <input pInputText formControlName="usuario" />
+  </div>
+
+  <button pButton type="submit" label="Guardar" [disabled]="clienteForm.invalid"></button>
+</form>

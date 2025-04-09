@@ -1,5 +1,9 @@
 
-<p-button label="Nuevo Cliente" severity="info" />
+<p-button
+  label="Nuevo Cliente"
+  severity="info"
+  (onClick)="abrirNuevoCliente()"
+/>
 
 <p-table [value]="clientes" [tableStyle]="{ 'min-width': '50rem' }">
   <ng-template #header>

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ICliente } from '../../dominio/entidades/cliente/cliente.inteface';
+import { ICliente, INuevoCliente } from '../../dominio/entidades/cliente/cliente.inteface';
 import { Observable } from 'rxjs';
 import { ApiMicro } from '../../dominio/enum/enum-dominio';
 
@@ -17,5 +17,9 @@ export class ApiService {
 
   async ObtenerClientes(): Promise<Observable<ICliente[]>>{
     return await this.http.get<ICliente[]>(ApiMicro.AdministracionClienteMicro)
+  }
+
+  crearCliente(cliente: INuevoCliente): Observable<ICliente> {
+    return this.http.post<ICliente>(ApiMicro.AdministracionClienteMicro, cliente);
   }
 }
