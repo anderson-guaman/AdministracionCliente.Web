@@ -19,6 +19,7 @@ export class ClienteComponent implements OnInit{
 
   clientes: ICliente[]=[];
   ref : DynamicDialogRef | undefined;
+  authService: any;
   constructor(
     private clienteServicio: ApiService,
     private dialogService: DialogService,
@@ -108,5 +109,8 @@ export class ClienteComponent implements OnInit{
         });
       }
     })
+  }
+  logout(): void {
+    this.authService.logout();
   }
 }

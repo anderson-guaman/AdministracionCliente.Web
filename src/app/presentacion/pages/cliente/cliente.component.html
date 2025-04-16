@@ -4,6 +4,11 @@
   severity="info"
   (onClick)="abrirNuevoCliente()"
 />
+<p-button
+  label="Cerrar sesión"
+  severity="danger"
+  (onClick)="logout()"
+/>
 <p-toast></p-toast>
 <p-table [value]="clientes" [tableStyle]="{ 'min-width': '50rem' }">
   <ng-template #header>
