@@ -11,3 +11,12 @@
 .error {
   color: red;
 }
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Espaciado entre los elementos */
+}
+
+button {
+  align-self: center; /* Centrar el botón horizontalmente */
+}
