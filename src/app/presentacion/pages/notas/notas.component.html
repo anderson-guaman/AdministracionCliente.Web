@@ -1,0 +1,9 @@
+<div>
+  <h3>Notas del Cliente</h3>
+  <ul>
+    <li *ngFor="let nota of notas">{{ nota }}</li>
+  </ul>
+  <p>Promedio: {{ promedio }}</p>
+  <input type="number" [(ngModel)]="nuevaNota" placeholder="Agregar nota" />
+  <button pButton type="button" label="Agregar Nota" (click)="agregarNota()"></button>
+</div>

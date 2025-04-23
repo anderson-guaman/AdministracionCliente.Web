@@ -6,7 +6,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { ICliente, INuevoCliente } from '../../../../dominio/entidades/cliente/cliente.inteface';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { ApiService } from '../../../../infraestructura/service/api.service';
+import { ApiService } from '../../../../infraestructura/service/cliente.service';
 import { take } from 'rxjs';
 import { MessageService } from 'primeng/api';
 @Component({

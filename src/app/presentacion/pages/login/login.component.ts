@@ -19,10 +19,12 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   onLogin(): void {
-    if (this.authService.login(this.username, this.password)) {
-      this.router.navigate(['/']);
-    } else {
-      this.error = 'Usuario o contraseña incorrectos';
-    }
+    this.authService.login(this.username, this.password).subscribe(success => {
+      if (success) {
+        this.router.navigate(['/']); // Redirige al usuario a la página principal
+      } else {
+        this.error = 'Usuario o contraseña incorrectos';
+      }
+    });
   }
 }

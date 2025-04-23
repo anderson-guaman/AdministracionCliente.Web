@@ -3,6 +3,7 @@
   label="Nuevo Cliente"
   severity="info"
   (onClick)="abrirNuevoCliente()"
+  class="me-2"
 />
 <p-button
   label="Cerrar sesión"
@@ -42,6 +43,16 @@
                 label="Eliminar"
                 class="p-button-sm p-button-info"
                 (click)="eliminarCliente(cliente)"
+                style="margin-right: 10px;"
+              ></button>
+
+              <button
+                pButton
+                type="button"
+                icon="pi pi-pen-to-square"
+                label="Ver Notas"
+                class="p-button-sm p-button-info"
+                (click)="verNotas(cliente)"
               ></button>
             </div>
           </td>

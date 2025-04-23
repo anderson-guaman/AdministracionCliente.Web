@@ -7,7 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { INuevoCliente } from '../../../../dominio/entidades/cliente/cliente.inteface';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
-import { ApiService } from '../../../../infraestructura/service/api.service';
+import { ApiService } from '../../../../infraestructura/service/cliente.service';
 import { take } from 'rxjs';
 
 
