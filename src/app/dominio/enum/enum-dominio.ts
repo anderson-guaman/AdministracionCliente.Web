@@ -1,4 +1,4 @@
 export enum ApiMicro{
-  AdministracionClienteMicro = "http://localhost:3001/clienteController",
-  AdministracionUsuarioMicro="http://localhost:3001/usuarioController",
+  AdministracionClienteMicro = "https://administracion-cliente-micro.onrender.com/clienteController",
+  AdministracionUsuarioMicro="https://administracion-cliente-micro.onrender.com/usuarioController",
 }
