@@ -19,10 +19,14 @@
     <input pInputText formControlName="segundoApellidoCliente" />
   </div>
 
-  <div class="field">
+  <!-- <div class="field">
     <label>Tipo de Identificación</label>
     <input pInputText formControlName="tipoIdentificacionCliente" />
-  </div>
+  </div> -->
+
+  <p-dropdown [options]="tipoDocumentos" formControlName="selectedDocument" placeholder="Seleccione un tipo de documento">
+  </p-dropdown>
+
 
   <div class="field">
     <label>Número de Cédula</label>

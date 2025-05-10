@@ -30,4 +30,7 @@ export class ApiService {
   eliminarCliente(id: string): Observable<ICliente> {
     return this.http.delete<ICliente>(`${ApiMicro.AdministracionClienteMicro}/${id}`);
   }
+  obtenerTiposDocumentos(): Observable<string[]> {
+    return this.http.get<string[]>(`${ApiMicro.AdministracionClienteMicro}/tipoDocumento`);
+  }
 }

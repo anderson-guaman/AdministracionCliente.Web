@@ -20,3 +20,27 @@ form {
 button {
   align-self: center; /* Centrar el botón horizontalmente */
 }
+.navbar {
+  background-color: #333;
+  padding: 1rem;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    gap: 1rem;
+
+    li a {
+      color: #fff;
+      text-decoration: none;
+
+      &.active {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+
+      &:hover {
+        color: #ddd;
+      }
+    }
+  }
+}
