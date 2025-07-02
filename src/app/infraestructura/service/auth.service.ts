@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
+import { ApiMicro } from '../../dominio/enum/enum-dominio';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +19,7 @@ export class AuthService {
   login(username: string, password: string): Observable<boolean> {
     console.log(password);
     // Realiza una solicitud GET al backend para obtener el usuario
-    return this.http.get<any>(`http://localhost:3001/usuarioController/${username}`)
+    return this.http.get<any>(`${environment.baseUrl}/${ApiMicro.AdministracionClienteMicro}/${username}`)
       .pipe(
         map(response => {
           if (response[0].usuario === username && response[0].constrasena === password) {
