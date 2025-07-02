@@ -1,0 +1,73 @@
+<form [formGroup]="consultaForm" (ngSubmit)="consultar()" *ngIf="rol" >
+  <div class="field">
+    <label>Fecha Inicio</label>
+    <input type="date" pInputText formControlName="fechaIni" />
+  </div>
+
+  <div class="field">
+    <label>Fecha Fin</label>
+    <input type="date" pInputText formControlName="fechaFin" />
+  </div>
+
+  <button class="" pButton type="submit" label="Guardar"></button>
+</form>
+
+<p-toast></p-toast>
+<p-table [value]="reporteConsumoCliente" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template #header>
+      <tr>
+          <th>Cliente</th>
+          <th>Nombre del Plan</th>
+          <th>Velocidad del Plan</th>
+          <th>Consumo total</th>
+          <th>Observaciones</th>
+      </tr>
+  </ng-template>
+  <ng-template #body let-reporte>
+      <tr>
+          <td>{{reporte.nombreCompleto}}</td>
+          <td>{{ reporte.plan_actual }}</td>
+          <td>{{ reporte.velocidadMbps }}</td>
+          <td>{{ reporte.promedio_mensual }}</td>
+          <td>{{ reporte.recomendacion }}</td>
+      </tr>
+  </ng-template>
+</p-table>
+
+
+<form [formGroup]="consultaForm" (ngSubmit)="consultar()" *ngIf="rol" >
+  <div class="field">
+    <label>Fecha Inicio</label>
+    <input type="date" pInputText formControlName="fechaIni" />
+  </div>
+
+  <div class="field">
+    <label>Fecha Fin</label>
+    <input type="date" pInputText formControlName="fechaFin" />
+  </div>
+
+  <button class="" pButton type="submit" label="Guardar"></button>
+</form>
+
+<p-toast></p-toast>
+<p-table [value]="reporteConsumoCliente" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template #header>
+      <tr>
+          <th>Cliente</th>
+          <th>Nombre del Plan</th>
+          <th>Velocidad del Plan</th>
+          <th>Consumo total</th>
+          <th>Observaciones</th>
+      </tr>
+  </ng-template>
+  <ng-template #body let-reporte>
+      <tr>
+          <td>{{reporte.nombreCompleto}}</td>
+          <td>{{ reporte.plan_actual }}</td>
+          <td>{{ reporte.velocidadMbps }}</td>
+          <td>{{ reporte.promedio_mensual }}</td>
+          <td>{{ reporte.recomendacion }}</td>
+      </tr>
+  </ng-template>
+</p-table>
+

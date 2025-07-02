@@ -20,6 +20,14 @@ form {
 button {
   align-self: center; /* Centrar el botón horizontalmente */
 }
+
+.field {
+    display: flex;
+
+    align-items: center;
+    gap: 10px; /* Espacio entre el label y el input */
+}
+
 .navbar {
   background-color: #333;
   padding: 1rem;
@@ -28,14 +36,19 @@ button {
     list-style-type: none;
     display: flex;
     gap: 1rem;
+    margin: 0;
+    padding: 0;
 
     li a {
       color: #fff;
       text-decoration: none;
+      padding: 0.5rem 1rem;
+      transition: color 0.3s ease;
 
       &.active {
         font-weight: bold;
-        text-decoration: underline;
+        background-color: #555;
+        border-radius: 4px;
       }
 
       &:hover {
@@ -43,4 +56,43 @@ button {
       }
     }
   }
+}
+
+/* Estilos para el dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none; /* Oculta el submenú por defecto */
+  position: absolute;
+  background-color: #444;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  top: 100%; /* Posiciona el submenú justo debajo del elemento padre */
+  left: 0;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block; /* Muestra el submenú al pasar el ratón por encima */
+}
+
+.dropdown-menu li a {
+  color: #fff;
+  padding: 0.5rem 1rem;
+  display: block;
+  text-decoration: none;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #555;
+}
+
+.dropdown-menu li a.active {
+  font-weight: bold;
+  background-color: #666;
 }

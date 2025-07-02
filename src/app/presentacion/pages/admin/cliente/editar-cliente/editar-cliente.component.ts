@@ -1,14 +1,13 @@
 import { Component, } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
-import { ICliente, INuevoCliente } from '../../../../dominio/entidades/cliente/cliente.inteface';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { ApiService } from '../../../../infraestructura/service/cliente.service';
 import { take } from 'rxjs';
 import { MessageService } from 'primeng/api';
+import { ICliente, INuevoCliente } from '../../../../../dominio/entidades/cliente/cliente.inteface';
+import { ClienteService } from '../../../../../infraestructura/service/cliente.service';
 @Component({
   selector: 'app-editar-cliente',
   imports: [
@@ -28,7 +27,7 @@ export class EditarClienteComponent {
   constructor(
     private fb: FormBuilder,
     private dialoConfig: DynamicDialogConfig,
-    private clienteService: ApiService,
+    private clienteService: ClienteService,
     private dialogRef: DynamicDialogRef,
   ) {}
 

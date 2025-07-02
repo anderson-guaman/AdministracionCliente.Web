@@ -1,14 +1,16 @@
 
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
-import { INuevoCliente } from '../../../../dominio/entidades/cliente/cliente.inteface';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
-import { ApiService } from '../../../../infraestructura/service/cliente.service';
 import { take } from 'rxjs';
+import { IPlan } from '../../../../../dominio/entidades/plan/plan.interface';
+import { ClienteService } from '../../../../../infraestructura/service/cliente.service';
+import { PlanService } from '../../../../../infraestructura/service/plan.service';
+import { INuevoCliente } from '../../../../../dominio/entidades/cliente/cliente.inteface';
 
 
 
@@ -27,12 +29,14 @@ export class NuevoClienteComponent implements OnInit {
 
   clienteForm: FormGroup;
   tipoDocumentos: any[] = [];
+  listaPlan!:IPlan[];
 
 
   constructor(
     private fb: FormBuilder,
     private dialogRef: DynamicDialogRef,
-    private clienteService: ApiService,
+    private clienteService: ClienteService,
+    private planService: PlanService,
   ) {
 
     this.clienteForm = this.fb.group({
@@ -45,11 +49,13 @@ export class NuevoClienteComponent implements OnInit {
       direccionCliente: ['', Validators.required],
       telefonoCliente: this.fb.array([this.fb.control('')]),
       usuario: ['', Validators.required],
-      selectedDocument: ['', Validators.required]
+      plan:['', Validators.required]
     });
   }
   ngOnInit(): void {
     this.obtenerTiposDocumentos();
+    this.clienteForm.get('usuario')?.setValue(this.obtenerUsuario());
+    this.obtenerPlanes();
   }
 
   get telefonos(): FormArray {
@@ -61,10 +67,21 @@ export class NuevoClienteComponent implements OnInit {
   }
 
   guardarCliente() {
+
     if (this.clienteForm.valid) {
 
-      const cliente: INuevoCliente = this.clienteForm.value;
-
+      const cliente: INuevoCliente = {
+        primerNombreCliente: this.clienteForm.controls['primerNombreCliente'].value,
+        segundoNombreCliente: this.clienteForm.controls['segundoNombreCliente'].value,
+        primerApellidoCliente: this.clienteForm.controls['primerApellidoCliente'].value,
+        segundoApellidoCliente: this.clienteForm.controls['segundoApellidoCliente'].value,
+        tipoIdentificacionCliente: this.clienteForm.controls['tipoIdentificacionCliente'].value,
+        numeroCedulaCliente: this.clienteForm.controls['numeroCedulaCliente'].value,
+        direccionCliente: this.clienteForm.controls['direccionCliente'].value,
+        telefonoCliente: this.clienteForm.controls['telefonoCliente'].value,
+        usuario: this.clienteForm.controls['usuario'].value,
+        idPlan: this.clienteForm.controls['plan'].value.idPlan
+      }
       this.clienteService.crearCliente(cliente)
         .pipe(take(1))
         .subscribe({
@@ -94,4 +111,24 @@ export class NuevoClienteComponent implements OnInit {
   }
 
 
+  obtenerUsuario(): string{
+    const usuarioGuardado = localStorage.getItem('user');
+    const usuario = JSON.parse(usuarioGuardado!);
+    console.log(usuario)
+    return usuario[0].codigoUnicoUsuario;
+  }
+
+  async obtenerPlanes(){
+    (await this.planService
+    .obtenerPlanes())
+    .pipe(take(1))
+    .subscribe({
+      next:(resultado:IPlan[]) =>{
+        this.listaPlan = resultado
+      },
+      error: error=>{
+        alert(error)
+      }
+    })
+  }
 }

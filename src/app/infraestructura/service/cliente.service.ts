@@ -9,7 +9,7 @@ import { ApiMicro } from '../../dominio/enum/enum-dominio';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class ClienteService {
 
   constructor(
     private http: HttpClient,

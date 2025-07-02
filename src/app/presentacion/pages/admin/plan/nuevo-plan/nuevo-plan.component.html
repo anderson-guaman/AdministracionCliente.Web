@@ -1,0 +1,18 @@
+<form [formGroup]="planForm" (ngSubmit)="guardarPlan()">
+  <div class="field">
+    <label>Nombre</label>
+    <input pInputText formControlName="nombrePlan" />
+  </div>
+
+  <div class="field">
+    <label>Capacidad</label>
+    <input pInputText formControlName="capacidadPlan" />
+  </div>
+
+  <div class="field">
+    <label>Tope Mensual</label>
+    <input pInputText formControlName="topeMensualPlan" />
+  </div>
+
+  <button pButton type="submit" label="Guardar"></button>
+</form>
