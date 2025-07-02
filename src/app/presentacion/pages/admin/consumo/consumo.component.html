@@ -18,18 +18,20 @@
   <ng-template #header>
       <tr>
           <th>Id</th>
-          <th>Nombre</th>
-          <th>Capacidad</th>
-          <th>Tope Mensual</th>
-          <th>Opciones</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Consumo</th>
+          <th>CLiente</th>
+          <th></th>
       </tr>
   </ng-template>
-  <ng-template #body let-plan>
+  <ng-template #body let-consumo>
       <tr>
-          <td>{{ plan.idPlan }}</td>
-          <td>{{ plan.nombre }}</td>
-          <td>{{ plan.velocidadMbps }}</td>
-          <td>{{ plan.topeMensualGB }}</td>
+          <td>{{ consumo.idConsumo }}</td>
+          <td>{{ consumo.fecha }}</td>
+          <td>{{ consumo.hora }}</td>
+          <td>{{ consumo.mbConsumidos }}</td>
+          <td> {{ consumo.cliente.primerNombreCliente }}  {{ consumo.cliente.primerApellidoCliente }} </td>
           <td>
             <div class="">
               <button
@@ -38,7 +40,7 @@
                 icon="pi pi-pencil"
                 label="Editar"
                 class="p-button-sm p-button-info"
-                (click)="abrirDialogEditar(plan)"
+                (click)="abrirDialogEditar(consumo)"
                 style="margin-right: 10px;"
               ></button>
               <button
@@ -47,7 +49,7 @@
                 icon="pi pi-trash"
                 label="Eliminar"
                 class="p-button-sm p-button-info"
-                (click)="eliminarCliente(plan)"
+                (click)="eliminarCliente(consumo)"
                 style="margin-right: 10px;"
               ></button>
             </div>

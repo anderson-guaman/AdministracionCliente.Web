@@ -39,7 +39,14 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     const storedAuth = localStorage.getItem('isAuthenticated');
-    this.isAuthenticated = storedAuth === 'true';
+    const usuarioString = localStorage.getItem('user');
+    const usuario = usuarioString ? JSON.parse(usuarioString) : null;
+    // this.isAuthenticated = storedAuth === 'true';
+    if(storedAuth === 'true' && usuario.usuario == 'admin') {
+      this.isAuthenticated = true
+    }else{
+      this.isAuthenticated = false
+    }
     return this.isAuthenticated;
   }
 }

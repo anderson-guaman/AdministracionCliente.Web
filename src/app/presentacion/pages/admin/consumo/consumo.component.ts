@@ -8,27 +8,31 @@ import { MessageService } from 'primeng/api';
 import { NuevoConsumoComponent } from './nuevo-consumo/nuevo-consumo.component';
 import { IConsumo } from '../../../../dominio/entidades/consumo/consumo.interface';
 import { AuthService } from '../../../../infraestructura/service/auth.service';
+import { ConsumoService } from '../../../../infraestructura/service/cosumo.service';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-consumo',
   imports: [ButtonModule, TableModule, ToastModule],
   templateUrl: './consumo.component.html',
-  providers:[DynamicDialogRef],
+  providers: [DynamicDialogRef],
 })
-export class ConsumoComponent implements OnInit{
+export class ConsumoComponent implements OnInit {
 
   consumos: IConsumo[] = [];
-  rol: string = '' ;
+  rol: string = '';
 
   constructor(
     private dynamicDialogRef: DynamicDialogRef,
     private dialogService: DialogService,
     private messageService: MessageService,
     private authService: AuthService,
-  ){};
+    private consumoService: ConsumoService,
+  ) { };
 
   ngOnInit(): void {
-    this.obtenerRol()
+    this.obtenerRol();
+    this.obtenerConsumos();
   }
   abrirDialogEditar(consumo: IConsumo) { }
   eliminarCliente(consumo: IConsumo) { }
@@ -58,14 +62,24 @@ export class ConsumoComponent implements OnInit{
     });
   }
 
-  obtenerConsumos(){
-
+  async obtenerConsumos() {
+    (await this.consumoService
+      .obtenerConsumos())
+      .pipe(take(1))
+      .subscribe({
+        next: (resultado) => {
+          this.consumos = resultado
+        },
+        error: error => {
+          alert(error)
+        }
+      })
   }
 
-  obtenerRol(){
+  obtenerRol() {
     const usuarioString = localStorage.getItem('user');
     const usuario = usuarioString ? JSON.parse(usuarioString) : null;
-    if(usuario) {
+    if (usuario) {
       this.rol = usuario[0].usuario
     }
   }

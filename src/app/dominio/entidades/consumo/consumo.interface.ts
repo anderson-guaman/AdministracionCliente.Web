@@ -8,6 +8,13 @@ export interface IConsumo {
   mbConsumidos: number;
   cliente: ICliente;
 }
+export interface IConsumoCrear {
+  idConsumo: number;
+  fecha: string;
+  hora: string;
+  mbConsumidos: number;
+  clienteCodigoUnicoCliente: number;
+}
 export interface IConsumoPlanes{
   idPlan: number;
   nombre:string;

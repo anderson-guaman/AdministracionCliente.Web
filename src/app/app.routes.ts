@@ -3,6 +3,7 @@ import { LoginComponent } from './presentacion/pages/login/login.component';
 import { ConsumoComponent } from './presentacion/pages/admin/consumo/consumo.component';
 
 export const routes: Routes = [
+
   {
     path:'login',
     component: LoginComponent
@@ -18,6 +19,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: ''
+    redirectTo: 'admin'
   },
 ];

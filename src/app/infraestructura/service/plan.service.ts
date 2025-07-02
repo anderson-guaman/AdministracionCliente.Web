@@ -16,7 +16,7 @@ export class PlanService {
   ) { }
 
   crearPlan(plan: IPlan): Observable<ICliente> {
-    return this.http.post<ICliente>(ApiMicro.AdministracionClienteMicro, plan);
+    return this.http.post<ICliente>(`${ApiMicro.AdministracionPlanMicro}/CrearPlan`, plan);
   }
 
   async obtenerPlanes(){

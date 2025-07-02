@@ -37,15 +37,15 @@ export class ReporteClientesComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.obtenerConsumoClientes();
     this.construirFormulario();
+    // this.obtenerConsumoClientes();
   }
 
   construirFormulario(){
     this.consultaForm = this.fb.group({
       fechaIni: [null, Validators.required],
       fechaFin: [null,Validators.required],
-      topeMensualPlan: ['', Validators.required],
+      // topeMensualPlan: ['', Validators.required],
     })
   }
 
