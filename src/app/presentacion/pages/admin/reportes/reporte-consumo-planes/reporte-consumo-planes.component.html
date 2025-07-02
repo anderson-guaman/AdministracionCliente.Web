@@ -1,0 +1,23 @@
+
+
+
+
+<p-toast></p-toast>
+<p-table [value]="consumoPlanes" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template #header>
+      <tr>
+          <th>IdPlan</th>
+          <th>Nombre del Plan</th>
+          <th>Consumo total</th>
+      </tr>
+  </ng-template>
+  <ng-template #body let-plan>
+      <tr>
+          <td>{{ plan.idPlan }}</td>
+          <td>{{ plan.nombre }}</td>
+          <td>
+            <span> {{ plan.consumo_mensual }} </span>
+          </td>
+      </tr>
+  </ng-template>
+</p-table>

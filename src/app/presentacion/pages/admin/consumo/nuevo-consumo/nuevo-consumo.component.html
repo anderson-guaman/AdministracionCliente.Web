@@ -1,0 +1,28 @@
+<form [formGroup]="consumoForm" (ngSubmit)="guardarConsumo()">
+  <div class="field">
+    <label>Hora</label>
+    <input pInputText formControlName="hora" />
+  </div>
+
+  <div class="field">
+    <label>Consumo en mb</label>
+    <input pInputText formControlName="consumo" />
+  </div>
+
+  <div class="field" >
+    <label>fecha</label>
+    <input pInputText formControlName="fecha" />
+  </div>
+
+
+  <label>Cliente</label>
+  <p-dropdown
+    [options]="listaCliente"
+    formControlName="cliente"
+    placeholder="Seleccione un tipo de documento"
+    optionLabel="nombreCompleto">
+  </p-dropdown>
+
+
+  <button pButton type="submit" label="Guardar"></button>
+</form>

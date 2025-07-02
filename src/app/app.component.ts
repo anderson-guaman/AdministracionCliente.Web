@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { PrimeNG } from 'primeng/config';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ RouterOutlet ],
+  imports: [RouterOutlet, ],
   templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit{

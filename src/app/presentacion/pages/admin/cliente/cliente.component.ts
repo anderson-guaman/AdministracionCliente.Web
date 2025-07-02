@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ICliente } from '../../../dominio/entidades/cliente/cliente.inteface';
 import { TableModule } from 'primeng/table';
-import { ApiService } from '../../../infraestructura/service/cliente.service';
 import { take } from 'rxjs';
 import { ButtonModule } from 'primeng/button';
 import { DialogService, DynamicDialogModule, DynamicDialogRef } from 'primeng/dynamicdialog'
@@ -9,23 +7,26 @@ import { NuevoClienteComponent } from './nuevo-cliente/nuevo-cliente.component';
 import { MessageService } from 'primeng/api';
 import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
 import { ToastModule } from 'primeng/toast';
-import { AuthService } from '../../../infraestructura/service/auth.service';
 import { NotasComponent } from '../notas/notas.component';
+import { ICliente } from '../../../../dominio/entidades/cliente/cliente.inteface';
+import { ClienteService } from '../../../../infraestructura/service/cliente.service';
+import { AuthService } from '../../../../infraestructura/service/auth.service';
 
 @Component({
   selector: 'app-cliente',
   imports: [TableModule, ButtonModule,DynamicDialogModule,ToastModule],
   templateUrl: './cliente.component.html',
+  providers: [DynamicDialogRef]
 })
 export class ClienteComponent implements OnInit{
 
   clientes: ICliente[]=[];
-  ref : DynamicDialogRef | undefined;
   constructor(
-    private clienteServicio: ApiService,
+    private clienteServicio: ClienteService,
     private dialogService: DialogService,
     private messageService: MessageService,
     private authService: AuthService,
+    private ref : DynamicDialogRef
   ){};
 
 
@@ -82,11 +83,11 @@ export class ClienteComponent implements OnInit{
     });
 
     this.ref.onClose.subscribe(() => {
-      this.messageService.add({
-        severity: 'info',
-        summary: 'Cliente editado exitosamente',
-        detail: ''
-      });
+      // this.messageService.add({
+      //   severity: 'info',
+      //   summary: 'Cliente editado exitosamente',
+      //   detail: ''
+      // });
       this.ngOnInit();
     });
   }

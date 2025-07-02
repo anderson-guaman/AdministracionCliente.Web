@@ -1,0 +1,14 @@
+<nav class="navbar">
+  <ul>
+    <li><a routerLink="/admin" routerLinkActive="active">Clientes</a></li>
+    <li><a routerLink="/admin/plan" routerLinkActive="active">Planes</a></li>
+    <li><a routerLink="/admin/consumo" routerLinkActive="active">Consumo</a></li>
+    <li class="dropdown" (click)="toggleDropdown()">
+      <a routerLink="/admin/reportes" routerLinkActive="active">Reportes</a>
+      <ul class="dropdown-menu" *ngIf="desplegar">
+        <li><a routerLink="/admin/reportes/clientes" routerLinkActive="active">Clientes</a></li>
+        <li><a routerLink="/admin/reportes/consumos" routerLinkActive="active">Consumos</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>

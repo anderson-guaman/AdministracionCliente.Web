@@ -14,6 +14,7 @@ export interface ICliente {
   fechaCreacion: string;
   fechaEliminacion?: string | null;
   fechaModificacion?: string | null;
+  nombreCompleto?: string
 }
 
 export interface INuevoCliente {
@@ -26,4 +27,5 @@ export interface INuevoCliente {
   direccionCliente: string;
   telefonoCliente: string[];
   usuario: string;
+  idPlan:number;
 }

@@ -1,0 +1,59 @@
+
+
+<p-button
+  label="Nuevo Consumo"
+  severity="info"
+  (onClick)="abrirNuevoPlan()"
+  class="me-2"
+/>
+@if (rol != 'admin') {
+  <p-button
+    label="Cerrar sesión"
+    severity="danger"
+    (onClick)="logout()"
+  />
+}
+<p-toast></p-toast>
+<p-table [value]="consumos" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template #header>
+      <tr>
+          <th>Id</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Consumo</th>
+          <th>CLiente</th>
+          <th></th>
+      </tr>
+  </ng-template>
+  <ng-template #body let-consumo>
+      <tr>
+          <td>{{ consumo.idConsumo }}</td>
+          <td>{{ consumo.fecha }}</td>
+          <td>{{ consumo.hora }}</td>
+          <td>{{ consumo.mbConsumidos }}</td>
+          <td> {{ consumo.cliente.primerNombreCliente }}  {{ consumo.cliente.primerApellidoCliente }} </td>
+          <td>
+            <div class="">
+              <button
+                pButton
+                type="button"
+                icon="pi pi-pencil"
+                label="Editar"
+                class="p-button-sm p-button-info"
+                (click)="abrirDialogEditar(consumo)"
+                style="margin-right: 10px;"
+              ></button>
+              <button
+                pButton
+                type="button"
+                icon="pi pi-trash"
+                label="Eliminar"
+                class="p-button-sm p-button-info"
+                (click)="eliminarCliente(consumo)"
+                style="margin-right: 10px;"
+              ></button>
+            </div>
+          </td>
+      </tr>
+  </ng-template>
+</p-table>

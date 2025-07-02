@@ -9,7 +9,7 @@ import { ApiMicro } from '../../dominio/enum/enum-dominio';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class ClienteService {
 
   constructor(
     private http: HttpClient,
@@ -29,5 +29,8 @@ export class ApiService {
 
   eliminarCliente(id: string): Observable<ICliente> {
     return this.http.delete<ICliente>(`${ApiMicro.AdministracionClienteMicro}/${id}`);
+  }
+  obtenerTiposDocumentos(): Observable<string[]> {
+    return this.http.get<string[]>(`${ApiMicro.AdministracionClienteMicro}/tipoDocumento`);
   }
 }

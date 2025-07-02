@@ -19,10 +19,10 @@
     <input pInputText formControlName="segundoApellidoCliente" />
   </div>
 
-  <div class="field">
-    <label>Tipo de Identificación</label>
-    <input pInputText formControlName="tipoIdentificacionCliente" />
-  </div>
+  <p-dropdown [options]="tipoDocumentos" formControlName="tipoIdentificacionCliente"
+    placeholder="Seleccione un tipo de documento">
+  </p-dropdown>
+
 
   <div class="field">
     <label>Número de Cédula</label>
@@ -44,9 +44,19 @@
     </div>
   </div>
 
+  <label>Plan</label>
+  <p-dropdown
+    [options]="listaPlan"
+    formControlName="plan"
+    placeholder="Selecciona el plan contratado"
+    optionLabel="nombre">
+  </p-dropdown>
+
   <div class="field">
     <label>Usuario</label>
-    <input pInputText formControlName="usuario" />
+    <input pInputText formControlName="usuario"
+          [readonly]="true"
+    />
   </div>
 
   <button pButton type="submit" label="Guardar" [disabled]="clienteForm.invalid"></button>
