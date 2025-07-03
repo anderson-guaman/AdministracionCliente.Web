@@ -19,7 +19,7 @@ export class AuthService {
   login(username: string, password: string): Observable<boolean> {
     console.log(password);
     // Realiza una solicitud GET al backend para obtener el usuario
-    return this.http.get<any>(`${environment.baseUrl}/${ApiMicro.AdministracionClienteMicro}/${username}`)
+    return this.http.get<any>(`${environment.baseUrl}/${ApiMicro.AdministracionUsuarioMicro}/${username}`)
       .pipe(
         map(response => {
           if (response[0].usuario === username && response[0].constrasena === password) {
