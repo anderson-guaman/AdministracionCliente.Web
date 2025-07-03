@@ -44,7 +44,9 @@ export class AuthService {
     const usuarioString = localStorage.getItem('user');
     const usuario = usuarioString ? JSON.parse(usuarioString) : null;
     // this.isAuthenticated = storedAuth === 'true';
-    if(storedAuth === 'true' && usuario.usuario === 'admin') {
+    // console.log(usuario.usuario)
+    if(storedAuth === 'true' && usuario[0].usuario === 'admin') {
+
       this.isAuthenticated = true
     }else{
       this.isAuthenticated = false

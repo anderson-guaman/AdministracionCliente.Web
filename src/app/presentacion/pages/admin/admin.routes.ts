@@ -14,6 +14,11 @@ export const adminRoutes: Routes = [
     component: AdminComponent,
     children: [
       {
+        path: '',
+        component: ClienteComponent,
+        canActivate: [AuthGuard],
+      },
+      {
         path: 'plan',
         component: PlanComponent,
         canActivate: [AuthGuard],
@@ -45,11 +50,7 @@ export const adminRoutes: Routes = [
 
         ]
       },
-      {
-        path: '',
-        component: ClienteComponent,
-        canActivate: [AuthGuard],
-      },
+
     ]
   },
 ]
