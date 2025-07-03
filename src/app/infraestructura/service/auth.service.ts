@@ -17,7 +17,7 @@ export class AuthService {
   ){}
 
   login(username: string, password: string): Observable<boolean> {
-    console.log(password);
+    // console.log(password);*+{-}
     // Realiza una solicitud GET al backend para obtener el usuario
     return this.http.get<any>(`${environment.baseUrl}/${ApiMicro.AdministracionUsuarioMicro}/${username}`)
       .pipe(
@@ -44,7 +44,7 @@ export class AuthService {
     const usuarioString = localStorage.getItem('user');
     const usuario = usuarioString ? JSON.parse(usuarioString) : null;
     // this.isAuthenticated = storedAuth === 'true';
-    if(storedAuth === 'true' && usuario.usuario == 'admin') {
+    if(storedAuth === 'true' && usuario.usuario === 'admin') {
       this.isAuthenticated = true
     }else{
       this.isAuthenticated = false
